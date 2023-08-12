@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:loyalty_program/customer/design.dart';
+import 'package:loyalty_program/customer/nav_bar_components/home.dart';
 import 'package:loyalty_program/login_signup/logout.dart';
 
 class nav_bar_routes extends StatefulWidget {
@@ -13,21 +15,17 @@ class nav_bar_routes extends StatefulWidget {
 class _nav_bar_routesState extends State<nav_bar_routes> {
   // @override
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+
   static List<Widget> _widgetOptions = <Widget>[
+    homePage(),
     LogoutButton(),
-    Text(
-      'Likes',
-      style: optionStyle,
-    ),
-    Text(
+    const Text(
       'Search',
-      style: optionStyle,
+      style: HeadlineStyle,
     ),
     Text(
       'Profile',
-      style: optionStyle,
+      style: HeadlineStyle,
     ),
   ];
 
@@ -62,7 +60,7 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
               activeColor: Colors.black,
               iconSize: 24,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              duration: Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 400),
               tabBackgroundColor: Colors.grey[100]!,
               color: Color.fromARGB(255, 129, 129, 129),
               tabs: [
