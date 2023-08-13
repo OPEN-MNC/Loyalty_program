@@ -18,9 +18,14 @@ class login_page extends StatefulWidget {
 class _login_pageState extends State<login_page> {
 //  This section is google verify section
 
+  // final GoogleSignIn _googleSignIn = GoogleSignIn(
+  //   scopes: ['email'],
+  //   serverClientId:
+  //       '519946534626-322rv82tbj9dgpstd2lrpjurlmmgt4v0.apps.googleusercontent.com', // OAuth  client id
+  // );
+
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: ['email'],
-    clientId: 'YOUR_CLIENT_ID', // OAuth  client id
   );
 
   Future<void> _handleSignIn() async {

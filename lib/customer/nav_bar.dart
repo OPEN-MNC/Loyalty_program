@@ -3,6 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:loyalty_program/customer/design.dart';
 import 'package:loyalty_program/customer/nav_bar_components/home.dart';
+import 'package:loyalty_program/customer/nav_bar_components/profile.dart';
 import 'package:loyalty_program/login_signup/logout.dart';
 
 class nav_bar_routes extends StatefulWidget {
@@ -23,10 +24,7 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
       'Search',
       style: HeadlineStyle,
     ),
-    Text(
-      'Profile',
-      style: HeadlineStyle,
-    ),
+    ProfilePage(),
   ];
 
   Widget build(BuildContext context) {
