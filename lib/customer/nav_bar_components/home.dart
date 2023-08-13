@@ -128,6 +128,9 @@ class _homePageState extends State<homePage> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
 
               SizedBox(
                 height: 600,
