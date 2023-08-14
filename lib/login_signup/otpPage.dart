@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_program/customer/design.dart';
 
 import 'package:loyalty_program/customer/nav_bar.dart';
 
@@ -48,7 +49,11 @@ class _OTPPageState extends State<OTPPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Enter OTP'),
+        backgroundColor: primary,
+        title: Text(
+          'Enter OTP',
+          style: midheadline,
+        ),
         centerTitle: true,
       ),
       body: Center(
@@ -57,6 +62,13 @@ class _OTPPageState extends State<OTPPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.network(
+                "https://img.freepik.com/free-vector/enter-otp-concept-illustration_114360-7897.jpg?w=2000",
+                height: 200,
+              ),
+              SizedBox(
+                height: 30,
+              ),
               TextFormField(
                 controller: _otpController,
                 keyboardType: TextInputType.number,

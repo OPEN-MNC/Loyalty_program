@@ -121,6 +121,13 @@ class _login_pageState extends State<login_page> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Image.network(
+                    "https://cdni.iconscout.com/illustration/premium/thumb/login-3305943-2757111.png",
+                    height: 200,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Form(
                     key: _formKey,
                     child: TextFormField(
@@ -149,7 +156,7 @@ class _login_pageState extends State<login_page> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      minimumSize: Size(300, 40),
+                      minimumSize: Size(400, 40),
                     ),
                     child: Text('Send OTP'),
                   ),
