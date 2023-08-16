@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:loyalty_program/customer/design.dart';
 
+// ignore: must_be_immutable
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
