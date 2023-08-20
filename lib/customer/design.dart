@@ -14,22 +14,34 @@ const TextStyle midheadline =
 const Color backgrounds = Colors.white12;
 // Universal design variable sectionor design function
 final BoxDecoration uniDesign = BoxDecoration(
-  borderRadius: BorderRadius.circular(20),
-  color: white, // Bright white creamy color
+  color: Colors.white, // Change the color as needed
+  borderRadius: BorderRadius.circular(20), // Add border radius
   boxShadow: [
     BoxShadow(
-      color:
-          Color.fromARGB(255, 160, 160, 160).withOpacity(0.3), // Shadow color
-      spreadRadius: 3,
-      blurRadius: 10,
-      offset: Offset(0, 3), // Offset in the x and y direction
+      color: Colors.grey.withOpacity(0.5),
+      spreadRadius: 2,
+      blurRadius: 5,
+      offset: Offset(0, 3),
     ),
   ],
-  // Add other properties like color, boxShadow, etc. here
 );
 
+//----  universial textbox decoration
+InputDecoration _customInputDecoration(String labelText, IconData prefixIcon) {
+  return InputDecoration(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(
+        color: Color.fromRGBO(172, 134, 214, 1), // Border color
+      ),
+    ),
+    prefixIcon: Icon(
+      prefixIcon,
+      color: gray,
+      size: 25,
+    ),
+    labelText: labelText,
+  );
+}
 
-
-// background section 
-
-
+// background section

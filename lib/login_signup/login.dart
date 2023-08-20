@@ -65,10 +65,20 @@ class _login_pageState extends State<login_page> {
     if (value == null || value.isEmpty) {
       return 'Please enter your phone number';
     }
+    if (!_isNumeric(value)) {
+      return 'Please enter only numeric digits';
+    }
     if (value.length != 10) {
       return 'Please enter a valid 10-digit phone number';
     }
     return null;
+  }
+
+  bool _isNumeric(String value) {
+    if (value == null) {
+      return false;
+    }
+    return double.tryParse(value) != null;
   }
 
   void _sendOTP() async {

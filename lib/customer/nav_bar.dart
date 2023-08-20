@@ -4,7 +4,6 @@ import 'package:line_icons/line_icons.dart';
 import 'package:loyalty_program/customer/design.dart';
 import 'package:loyalty_program/customer/nav_bar_components/home.dart';
 import 'package:loyalty_program/customer/nav_bar_components/profile.dart';
-import 'package:loyalty_program/login_signup/logout.dart';
 
 class nav_bar_routes extends StatefulWidget {
   const nav_bar_routes({super.key});
@@ -19,7 +18,7 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
 
   static List<Widget> _widgetOptions = <Widget>[
     homePage(),
-    LogoutButton(),
+    // LogoutButton(),
     const Text(
       'Search',
       style: HeadlineStyle,
@@ -65,10 +64,6 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
                 GButton(
                   icon: LineIcons.home,
                   text: 'Home',
-                ),
-                GButton(
-                  icon: LineIcons.heart,
-                  text: 'Likes',
                 ),
                 GButton(
                   icon: LineIcons.search,
