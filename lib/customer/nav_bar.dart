@@ -5,6 +5,8 @@ import 'package:loyalty_program/customer/design.dart';
 import 'package:loyalty_program/customer/nav_bar_components/home.dart';
 import 'package:loyalty_program/customer/nav_bar_components/profile.dart';
 
+import 'nav_bar_components/reword_history.dart';
+
 class nav_bar_routes extends StatefulWidget {
   const nav_bar_routes({super.key});
 
@@ -19,10 +21,11 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
   static List<Widget> _widgetOptions = <Widget>[
     homePage(),
     // LogoutButton(),
-    const Text(
-      'Search',
-      style: HeadlineStyle,
-    ),
+    RewardSection(),
+    // const Text(
+    //   'Search',
+    //   style: HeadlineStyle,
+    // ),
     ProfilePage(),
   ];
 
@@ -66,8 +69,8 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
                   text: 'Home',
                 ),
                 GButton(
-                  icon: LineIcons.search,
-                  text: 'Search',
+                  icon: LineIcons.gift,
+                  text: 'Reward',
                 ),
                 GButton(
                   icon: LineIcons.user,

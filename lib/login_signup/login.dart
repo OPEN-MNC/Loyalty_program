@@ -75,6 +75,7 @@ class _login_pageState extends State<login_page> {
   }
 
   bool _isNumeric(String value) {
+    // ignore: unnecessary_null_comparison
     if (value == null) {
       return false;
     }
