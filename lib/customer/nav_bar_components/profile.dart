@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:loyalty_program/customer/design.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../login_signup/login.dart';
 import '../../login_signup/logout.dart';
 
+// ignore: must_be_immutable
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
-  double _profile_complete_process =
+  final double _profile_complete_process =
       43; // Change this to a value between 0 and 100
   int _gift = 16;
+  // ignore: unused_field
   String? _selectedGender;
 
   @override
@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Container(
                 height: 210,
                 width: 500,
@@ -32,38 +32,38 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         backgroundImage: NetworkImage(
                           "https://static.fotor.com/app/features/img/aiface/advance/2.png",
                         ),
                         radius: 40, // Increased radius
                       ),
-                      SizedBox(height: 10),
-                      Text("Sumon Malik", style: midheadline),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
+                      const Text("Sumon Malik", style: midheadline),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Column(
                             children: [
-                              Icon(
+                              const Icon(
                                 LineIcons.coins,
                                 color: gray,
                                 size: 30,
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Text("₹ ${_profile_complete_process.toString()}",
                                   style: midheadline),
                             ],
                           ),
                           Column(
                             children: [
-                              Icon(
+                              const Icon(
                                 LineIcons.gift,
                                 color: gray,
                                 size: 30,
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Text("${_gift.toString()}", style: midheadline),
                             ],
                           ),
@@ -79,19 +79,21 @@ class ProfilePage extends StatelessWidget {
                                       value: _profile_complete_process / 100.0,
                                       strokeWidth: 3,
                                       backgroundColor: Colors.grey,
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                          primary),
+                                      valueColor:
+                                          const AlwaysStoppedAnimation<Color>(
+                                              primary),
                                     ),
                                   ),
                                   Text(
                                     '${_profile_complete_process.toStringAsFixed(0)}%',
-                                    style:
-                                        TextStyle(color: primary, fontSize: 16),
+                                    style: const TextStyle(
+                                        color: primary, fontSize: 16),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 5),
-                              Text("Profile complete", style: generalStyle),
+                              const SizedBox(height: 5),
+                              const Text("Profile complete",
+                                  style: generalStyle),
                             ],
                           ),
                         ],
@@ -102,7 +104,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               //---------------------------------------------
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 width: 500,
                 decoration: uniDesign,
@@ -110,7 +112,7 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.all(15.0),
                     child: Stack(
                       children: [
-                        Column(
+                        const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
@@ -200,7 +202,7 @@ class ProfilePage extends StatelessWidget {
                               // );
                               _showPopup(context);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               LineIcons.edit,
                               color: gray,
                               size: 25,
@@ -210,13 +212,13 @@ class ProfilePage extends StatelessWidget {
                       ],
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
                 decoration: uniDesign,
-                child: Padding(
-                  padding: const EdgeInsets.all(11.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(11.0),
                   child: Row(children: [
                     Icon(Icons.settings),
                     SizedBox(
@@ -229,13 +231,13 @@ class ProfilePage extends StatelessWidget {
                   ]),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
                 decoration: uniDesign,
-                child: Padding(
-                  padding: const EdgeInsets.all(11.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(11.0),
                   child: Row(children: [
                     Icon(LineIcons.lock),
                     SizedBox(
@@ -248,7 +250,7 @@ class ProfilePage extends StatelessWidget {
                   ]),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
@@ -278,7 +280,7 @@ void _showPopup(BuildContext context) {
       return StatefulBuilder(
         builder: (BuildContext context, StateSetter setState) {
           return AlertDialog(
-            title: Text('Update Details'),
+            title: const Text('Update Details'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -288,10 +290,10 @@ void _showPopup(BuildContext context) {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(172, 134, 214, 1)),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(172, 134, 214, 1)),
                     ),
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       LineIcons.birthdayCake,
                       color: gray,
                       size: 25,
@@ -299,17 +301,17 @@ void _showPopup(BuildContext context) {
                     labelText: 'Enter your DOB',
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextField(
                   controller: _anniversaryController,
                   keyboardType: TextInputType.datetime,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(172, 134, 214, 1)),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(172, 134, 214, 1)),
                     ),
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       LineIcons.ring,
                       color: gray,
                       size: 25,
@@ -317,17 +319,17 @@ void _showPopup(BuildContext context) {
                     labelText: 'Enter Anniversary date',
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextField(
                   controller: _ageController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(172, 134, 214, 1)),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(172, 134, 214, 1)),
                     ),
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       LineIcons.birthdayCake,
                       color: gray,
                       size: 25,
@@ -335,12 +337,12 @@ void _showPopup(BuildContext context) {
                     labelText: 'Enter your age',
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   "Select your Gender",
                   style: midheadline,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -353,7 +355,7 @@ void _showPopup(BuildContext context) {
                         });
                       },
                     ),
-                    Icon(Icons.male),
+                    const Icon(Icons.male),
                     Radio<String>(
                       value: 'Female',
                       groupValue: _selectedGender,
@@ -363,7 +365,7 @@ void _showPopup(BuildContext context) {
                         });
                       },
                     ),
-                    Icon(LineIcons.female),
+                    const Icon(LineIcons.female),
                     Radio<String>(
                       value: 'Other',
                       groupValue: _selectedGender,
@@ -373,10 +375,10 @@ void _showPopup(BuildContext context) {
                         });
                       },
                     ),
-                    Text('Other'),
+                    const Text('Other'),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -386,9 +388,9 @@ void _showPopup(BuildContext context) {
                       },
                       style: ElevatedButton.styleFrom(
                         primary: primary,
-                        minimumSize: Size(70, 30),
+                        minimumSize: const Size(70, 30),
                       ),
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -398,9 +400,9 @@ void _showPopup(BuildContext context) {
                       },
                       style: ElevatedButton.styleFrom(
                         primary: primary,
-                        minimumSize: Size(70, 30),
+                        minimumSize: const Size(70, 30),
                       ),
-                      child: Text('Update'),
+                      child: const Text('Update'),
                     ),
                   ],
                 ),

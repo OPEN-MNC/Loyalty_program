@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:loyalty_program/customer/design.dart';
 import 'package:loyalty_program/customer/nav_bar_components/home.dart';
 import 'package:loyalty_program/customer/nav_bar_components/profile.dart';
 
@@ -18,10 +17,10 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
   // @override
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
-    homePage(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const homePage(),
     // LogoutButton(),
-    RewardSection(),
+    RewardCard(),
     // const Text(
     //   'Search',
     //   style: HeadlineStyle,
@@ -59,11 +58,11 @@ class _nav_bar_routesState extends State<nav_bar_routes> {
               gap: 8,
               activeColor: Colors.black,
               iconSize: 24,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: const Duration(milliseconds: 400),
               tabBackgroundColor: Colors.grey[100]!,
-              color: Color.fromARGB(255, 129, 129, 129),
-              tabs: [
+              color: const Color.fromARGB(255, 129, 129, 129),
+              tabs: const [
                 GButton(
                   icon: LineIcons.home,
                   text: 'Home',

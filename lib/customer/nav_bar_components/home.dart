@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:loyalty_program/customer/nav_bar_components/notification.dart';
 import '../design.dart';
 
 class homePage extends StatefulWidget {
+  const homePage({super.key});
+
   @override
   State<homePage> createState() => _homePageState();
 }
@@ -28,7 +31,7 @@ class _homePageState extends State<homePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
               Container(
@@ -44,17 +47,22 @@ class _homePageState extends State<homePage> {
                         // SizedBox(
                         //   width: 20,
                         // ),
-                        CircleAvatar(
+                        const CircleAvatar(
                           backgroundImage: NetworkImage(
                               "https://static.fotor.com/app/features/img/aiface/advance/2.png"),
                         ),
-                        Text(
+                        const Text(
                           'Amal..                                    ',
                           style: midheadline,
                         ),
                         IconButton(
-                            onPressed: () {},
-                            icon: Icon(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => NotificationCard()));
+                            },
+                            icon: const Icon(
                               LineIcons.gifts,
                               color: gray,
                               size: 30,
@@ -68,7 +76,7 @@ class _homePageState extends State<homePage> {
 
               // Featured Offers
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -115,7 +123,7 @@ class _homePageState extends State<homePage> {
                             return Container(
                               width: 10,
                               height: 10,
-                              margin: EdgeInsets.symmetric(horizontal: 5),
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: _currentIndex == index ? primary : white,
@@ -128,15 +136,15 @@ class _homePageState extends State<homePage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
               SizedBox(
                 height: 600,
                 child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
@@ -146,14 +154,14 @@ class _homePageState extends State<homePage> {
                     return Container(
                       height: 200, // Increased height
                       // width: 150, // Decreased width
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 10,
                       ), // Added side spacing
                       decoration: uniDesign,
                       child: Stack(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(9.0),
+                          const Padding(
+                            padding: EdgeInsets.all(9.0),
                             child: Column(
                               children: [
                                 Text(

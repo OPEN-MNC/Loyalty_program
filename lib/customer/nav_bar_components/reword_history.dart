@@ -1,106 +1,107 @@
 import 'package:flutter/material.dart';
-import 'package:scratcher/scratcher.dart';
+import 'package:flutter/services.dart';
 
-class RewardScratcherCard extends StatefulWidget {
-  final String backgroundImageUrl;
-  final VoidCallback onScratchComplete;
+import '../design.dart';
 
-  RewardScratcherCard({
-    required this.backgroundImageUrl,
-    required this.onScratchComplete,
-  });
-
-  @override
-  _RewardScratcherCardState createState() => _RewardScratcherCardState();
-}
-
-class _RewardScratcherCardState extends State<RewardScratcherCard> {
-  bool _isRevealed = false;
-  double _scratchAreaPercent = 0.0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scratcher(
-      accuracy: ScratchAccuracy.low,
-      threshold: 0.6, // Set the threshold to 60%
-      brushSize: 50,
-      onThreshold: () {
-        setState(() {
-          _isRevealed = true;
-        });
-        widget.onScratchComplete();
-      },
-      child: Container(
-        width: 200,
-        height: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), // Add rounded corners
-          image: DecorationImage(
-            image: NetworkImage(widget.backgroundImageUrl),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: _isRevealed
-            ? null
-            : FractionallySizedBox(
-                widthFactor: _scratchAreaPercent,
-                heightFactor: 1.0,
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  color: Colors.yellow, // Change color to "yolo"
-                ),
-              ),
-      ),
-      onChange: (value) {
-        setState(() {
-          _scratchAreaPercent = value;
-        });
-      },
+class RewardCard extends StatelessWidget {
+  RewardCard({super.key});
+  void copyToClipboard(BuildContext context, String text) {
+    Clipboard.setData(ClipboardData(text: text));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Text copied to clipboard')),
     );
   }
-}
 
-class RewardSection extends StatelessWidget {
-  final List<String> rewardImageUrls = [
+  final List<String> discountImages = [
     'https://media.istockphoto.com/id/1351312392/vector/illustration-of-hand-playing-scratch-card-on-the-black-mobile-idea-for-online-gambling.jpg?s=612x612&w=0&k=20&c=q3Ssj3ohRfhGGtx6BTqdgjBqTZfAO2KXfOCYR2WEO5Q=',
+    'https://media.istockphoto.com/id/1351312392/vector/illustration-of-hand-playing-scratch-card-on-the-black-mobile-idea-for-online-gambling.jpg?s=612x612&w=0&k=20&c=q3Ssj3ohRfhGGtx6BTqdgjBqTZfAO2KXfOCYR2WEO5Q=',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQan5ymH_RIbm0xUgXlPtTgmmKvipqgetZGg&usqp=CAU',
+    'https://4.imimg.com/data4/GV/RI/MY-1466179/snakker-scratch-card-500x500.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUh5LUfG0-km2H2ea4oeSax78g2gC6XlPXVA&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIxbLZ5z_r-Q0zgCMaSIe1DNDNkgTiE-nvNQ&usqp=CAU',
     'https://4.imimg.com/data4/GV/RI/MY-1466179/snakker-scratch-card-500x500.jpg', // Add more reward image URLs
+  ];
+
+  final List<String> discountcopy = [
+    "company name ",
+    "samy one name ",
+    "my mode name ",
+    "rupa name ",
+    "nimputi khanu ",
+    "rahul sarma ",
+    "surat mancom"
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Reward Section'),
-      ),
-      body: ListView.builder(
-        itemCount: rewardImageUrls.length,
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 20,
+        ),
+        itemCount: discountImages.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: RewardScratcherCard(
-              backgroundImageUrl: rewardImageUrls[index],
-              onScratchComplete: () {
-// You can add a delay before showing the dialog
-                Future.delayed(Duration(seconds: 3), () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text('Congratulations!'),
-                        content: Text('You won a reward!'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text('OK'),
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              decoration: uniDesign,
+              child: Padding(
+                padding: const EdgeInsets.all(11.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "50% OFF",
+                          style: HeadlineStyle,
+                        ),
+                        Container(
+                          width: 101,
+                          decoration: BoxDecoration(
+                            color: lightgray,
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                        ],
-                      );
-                    },
-                  );
-                });
-              },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              discountcopy[index],
+                              style: TextStyle(
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // const SizedBox(
+                    //   height: 20,
+                    // ),
+                    //--------------
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(
+                            discountImages[index],
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            // Code to copy text
+                            copyToClipboard(context, discountcopy[index]);
+                          },
+                          icon: Icon(Icons.copy),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           );
         },

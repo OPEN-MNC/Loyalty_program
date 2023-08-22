@@ -36,14 +36,14 @@ class _login_pageState extends State<login_page> {
         await _storeUserData(googleUser);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => nav_bar_routes()),
+          MaterialPageRoute(builder: (_) => const nav_bar_routes()),
         );
       } else {
         // User cancelled the sign-in process
-        print('Google Sign-In Cancelled');
+        debugPrint('Google Sign-In Cancelled');
       }
     } catch (error) {
-      print('Google Sign-In Error: $error');
+      debugPrint('Google Sign-In Error: $error');
     }
   }
 

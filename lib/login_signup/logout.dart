@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loyalty_program/login_signup/login.dart'; // Import your login page here
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../customer/design.dart';
 

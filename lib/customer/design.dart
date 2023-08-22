@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 const Color gray = Color.fromARGB(255, 160, 160, 160);
+const Color lightgray = Color.fromARGB(255, 223, 223, 223);
 const Color white = Colors.white;
 const Color primary = Color.fromARGB(255, 160, 44, 255);
 
+// ignore: constant_identifier_names
 const TextStyle HeadlineStyle =
     TextStyle(fontSize: 25, fontWeight: FontWeight.w400);
 const TextStyle generalStyle =
@@ -21,7 +23,7 @@ final BoxDecoration uniDesign = BoxDecoration(
       color: Colors.grey.withOpacity(0.5),
       spreadRadius: 2,
       blurRadius: 5,
-      offset: Offset(0, 3),
+      offset: const Offset(0, 3),
     ),
   ],
 );
@@ -31,7 +33,7 @@ InputDecoration _customInputDecoration(String labelText, IconData prefixIcon) {
   return InputDecoration(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(
+      borderSide: const BorderSide(
         color: Color.fromRGBO(172, 134, 214, 1), // Border color
       ),
     ),
