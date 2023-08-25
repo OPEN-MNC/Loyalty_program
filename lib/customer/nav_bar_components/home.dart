@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:loyalty_program/customer/nav_bar_components/notification.dart';
+import 'package:loyalty_program/customer/nav_bar_components/profile.dart';
 import '../design.dart';
 
 class homePage extends StatefulWidget {
@@ -47,9 +48,17 @@ class _homePageState extends State<homePage> {
                         // SizedBox(
                         //   width: 20,
                         // ),
-                        const CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://static.fotor.com/app/features/img/aiface/advance/2.png"),
+                        InkWell(
+                          child: const CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                "https://static.fotor.com/app/features/img/aiface/advance/2.png"),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => ProfilePage()));
+                          },
                         ),
                         const Text(
                           'Amal..                                    ',

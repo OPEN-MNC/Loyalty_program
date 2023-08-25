@@ -9,7 +9,7 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final double _profile_complete_process =
-      43; // Change this to a value between 0 and 100
+      100; // Change this to a value between 0 and 100
   int _gift = 16;
   // ignore: unused_field
   String? _selectedGender;
@@ -24,7 +24,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               const SizedBox(height: 50),
               Container(
-                height: 210,
+                height: 220,
                 width: 500,
                 decoration: uniDesign,
                 child: Padding(
@@ -39,7 +39,8 @@ class ProfilePage extends StatelessWidget {
                         radius: 40, // Increased radius
                       ),
                       const SizedBox(height: 10),
-                      const Text("Sumon Malik", style: midheadline),
+                      const Text("Sumon Malik",
+                          style: TextStyle(color: primary, fontSize: 17)),
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -48,7 +49,7 @@ class ProfilePage extends StatelessWidget {
                             children: [
                               const Icon(
                                 LineIcons.coins,
-                                color: gray,
+                                color: Colors.yellow,
                                 size: 30,
                               ),
                               const SizedBox(height: 10),
@@ -60,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                             children: [
                               const Icon(
                                 LineIcons.gift,
-                                color: gray,
+                                color: primary,
                                 size: 30,
                               ),
                               const SizedBox(height: 10),
@@ -81,19 +82,20 @@ class ProfilePage extends StatelessWidget {
                                       backgroundColor: Colors.grey,
                                       valueColor:
                                           const AlwaysStoppedAnimation<Color>(
-                                              primary),
+                                              Colors.green),
                                     ),
                                   ),
                                   Text(
                                     '${_profile_complete_process.toStringAsFixed(0)}%',
                                     style: const TextStyle(
-                                        color: primary, fontSize: 16),
+                                        color: Colors.green, fontSize: 16),
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 5),
                               const Text("Profile complete",
-                                  style: generalStyle),
+                                  style:
+                                      TextStyle(color: primary, fontSize: 13)),
                             ],
                           ),
                         ],

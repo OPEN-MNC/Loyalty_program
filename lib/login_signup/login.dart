@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
 import 'package:loyalty_program/customer/nav_bar.dart';
 import 'package:loyalty_program/login_signup/otpPage.dart';
+import 'package:loyalty_program/manager/dashboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -177,8 +179,295 @@ class _login_pageState extends State<login_page> {
                   SizedBox(
                     height: 20,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _handleSignIn,
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // Creamy white bright color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                20), // Border radius of 20
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 9),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                height: 35,
+                                width: 35,
+                                decoration: uniDesign,
+                                child: Center(
+                                  child: Image.network(
+                                    'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png',
+                                    height: 30,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                'Sign in with Google',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      //--------------------------- manager side.
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => manager_login()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // Creamy white bright color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                10), // Border radius of 20
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 9),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(width: 10),
+                              Text(
+                                'Manager login',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Stack(
+//         children: [
+//           Positioned.fill(
+//             child: CustomPaint(
+//               painter: BackgroundPainter(),
+//             ),
+//           ),
+//           Positioned.fill(
+//             child: ClipRect(
+//               child: BackdropFilter(
+//                 filter: ImageFilter.blur(sigmaX: 35, sigmaY: 35),
+//                 child: Container(
+//                   color: Colors.transparent,
+//                 ),
+//               ),
+//             ),
+//           ),
+
+//---------------------- manager login
+
+class manager_login extends StatefulWidget {
+  manager_login({super.key});
+
+  @override
+  State<manager_login> createState() => _manager_loginState();
+}
+
+class _manager_loginState extends State<manager_login> {
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: ['email'],
+  );
+
+  Future<void> _handleSignInManager() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser != null) {
+        // User successfully signed in, store user data and navigate
+        await _storeUserDataManager(googleUser);
+        Navigator.pushReplacement(
+          context as BuildContext,
+          MaterialPageRoute(builder: (_) => const nav_Bar_Manager_rout()),
+        );
+      } else {
+        // User cancelled the sign-in process
+        debugPrint('Google Sign-In Cancelled');
+      }
+    } catch (error) {
+      debugPrint('Google Sign-In Error: $error');
+    }
+  }
+
+  // In the _storeUserData function, handle the case when user.photoUrl is null:
+  Future<void> _storeUserDataManager(GoogleSignInAccount user) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('userName', user.displayName ?? '');
+    prefs.setString('userEmail', user.email);
+    prefs.setString('userPhotoUrl', user.photoUrl ?? ''); // Handle null case
+    prefs.setBool('isLoggedIn', true);
+  }
+
+  // Here is log in with OTP section
+  final TextEditingController _phoneNumberControllerManager =
+      TextEditingController();
+
+  final GlobalKey<FormState> _formKeys = GlobalKey<FormState>();
+
+  String? _validatePhoneNumberManager(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your phone number';
+    }
+    if (!_isNumericManager(value)) {
+      return 'Please enter only numeric digits';
+    }
+    if (value.length != 10) {
+      return 'Please enter a valid 10-digit phone number';
+    }
+    return null;
+  }
+
+  bool _isNumericManager(String value) {
+    // ignore: unnecessary_null_comparison
+    if (value == null) {
+      return false;
+    }
+    return double.tryParse(value) != null;
+  }
+
+  void _sendOTP() async {
+    if (_formKeys.currentState!.validate()) {
+      // Send OTP logic here
+      print("Sending OTP to: ${_phoneNumberControllerManager.text}");
+
+      // Simulate successful OTP sending
+      await Future.delayed(Duration(seconds: 2));
+
+      // Set login status to true in shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isLoggedIn', true);
+
+      // Redirect to the home page
+      Navigator.pushReplacement(
+        context as BuildContext,
+        MaterialPageRoute(
+          builder: (context) => OTPPagemanager(
+              phoneNumbermanager: _phoneNumberControllerManager.text),
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          "Manager login",
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            )),
+      ),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: CustomPaint(
+              painter: BackgroundPainter(),
+            ),
+          ),
+          Positioned.fill(
+            child: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 35, sigmaY: 35),
+                child: Container(
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Hi ...",
+                    style: HeadlineStyle,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    "Manager",
+                    style: HeadlineStyle,
+                  ),
+
+                  Image.network(
+                    "https://cdni.iconscout.com/illustration/premium/thumb/login-page-4468581-3783954.png",
+                    height: 200,
+                  ),
+
+                  Form(
+                    key: _formKeys,
+                    child: TextFormField(
+                      controller: _phoneNumberControllerManager,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(
+                                  172, 134, 214, 1)), // Border color
+                        ),
+                        prefixIcon: Icon(Icons.phone),
+                        labelText: 'Mobile Phone Number',
+                      ),
+                      validator: _validatePhoneNumberManager,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                    ),
+                  ),
+                  SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: _handleSignIn,
+                    onPressed: _sendOTP,
+                    style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 127, 187, 181),
+                      onPrimary: Color.fromARGB(255, 37, 37, 37),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      minimumSize: Size(400, 40),
+                    ),
+                    child: Text('Send OTP'),
+                  ),
+
+                  // this section is google signin authentication .
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: _handleSignInManager,
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white, // Creamy white bright color
                       shape: RoundedRectangleBorder(
@@ -220,23 +509,3 @@ class _login_pageState extends State<login_page> {
     );
   }
 }
-
-
-
-// Stack(
-//         children: [
-//           Positioned.fill(
-//             child: CustomPaint(
-//               painter: BackgroundPainter(),
-//             ),
-//           ),
-//           Positioned.fill(
-//             child: ClipRect(
-//               child: BackdropFilter(
-//                 filter: ImageFilter.blur(sigmaX: 35, sigmaY: 35),
-//                 child: Container(
-//                   color: Colors.transparent,
-//                 ),
-//               ),
-//             ),
-//           ),
