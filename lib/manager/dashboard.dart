@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_program/customer/design.dart';
 
-class nav_Bar_Manager_rout extends StatelessWidget {
-  const nav_Bar_Manager_rout({super.key});
+class dashboard_page extends StatelessWidget {
+  const dashboard_page({super.key});
 
   @override
   Widget build(BuildContext context) {

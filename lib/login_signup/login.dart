@@ -1,13 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icon.dart';
+
 import 'package:loyalty_program/customer/nav_bar.dart';
 import 'package:loyalty_program/login_signup/otpPage.dart';
-import 'package:loyalty_program/manager/dashboard.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../customer/design.dart';
+import '../manager/manager_nav_bar.dart';
 import '../splash_screens/splash_screen.dart';
 
 class login_page extends StatefulWidget {
@@ -297,7 +298,7 @@ class _manager_loginState extends State<manager_login> {
         await _storeUserDataManager(googleUser);
         Navigator.pushReplacement(
           context as BuildContext,
-          MaterialPageRoute(builder: (_) => const nav_Bar_Manager_rout()),
+          MaterialPageRoute(builder: (_) => nav_Bar_Manager_rout()),
         );
       } else {
         // User cancelled the sign-in process
@@ -308,7 +309,7 @@ class _manager_loginState extends State<manager_login> {
     }
   }
 
-  // In the _storeUserData function, handle the case when user.photoUrl is null:
+  // In the _storeUserDataManager function, handle the case when user.photoUrl is null:
   Future<void> _storeUserDataManager(GoogleSignInAccount user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('userName', user.displayName ?? '');
@@ -344,7 +345,7 @@ class _manager_loginState extends State<manager_login> {
     return double.tryParse(value) != null;
   }
 
-  void _sendOTP() async {
+  void _sendOTPS() async {
     if (_formKeys.currentState!.validate()) {
       // Send OTP logic here
       print("Sending OTP to: ${_phoneNumberControllerManager.text}");
@@ -407,100 +408,102 @@ class _manager_loginState extends State<manager_login> {
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Hi ...",
-                    style: HeadlineStyle,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Manager",
-                    style: HeadlineStyle,
-                  ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Hi ...",
+                      style: HeadlineStyle,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "Manager",
+                      style: HeadlineStyle,
+                    ),
 
-                  Image.network(
-                    "https://cdni.iconscout.com/illustration/premium/thumb/login-page-4468581-3783954.png",
-                    height: 200,
-                  ),
+                    Image.network(
+                      "https://cdni.iconscout.com/illustration/premium/thumb/login-page-4468581-3783954.png",
+                      height: 200,
+                    ),
 
-                  Form(
-                    key: _formKeys,
-                    child: TextFormField(
-                      controller: _phoneNumberControllerManager,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                              color: Color.fromRGBO(
-                                  172, 134, 214, 1)), // Border color
+                    Form(
+                      key: _formKeys,
+                      child: TextFormField(
+                        controller: _phoneNumberControllerManager,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(
+                                color: Color.fromRGBO(
+                                    172, 134, 214, 1)), // Border color
+                          ),
+                          prefixIcon: Icon(Icons.phone),
+                          labelText: 'Mobile Phone Number',
                         ),
-                        prefixIcon: Icon(Icons.phone),
-                        labelText: 'Mobile Phone Number',
+                        validator: _validatePhoneNumberManager,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                       ),
-                      validator: _validatePhoneNumberManager,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _sendOTP,
-                    style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 127, 187, 181),
-                      onPrimary: Color.fromARGB(255, 37, 37, 37),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _sendOTPS,
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 127, 187, 181),
+                        onPrimary: Color.fromARGB(255, 37, 37, 37),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        minimumSize: Size(400, 40),
                       ),
-                      minimumSize: Size(400, 40),
+                      child: Text('Send OTP'),
                     ),
-                    child: Text('Send OTP'),
-                  ),
 
-                  // this section is google signin authentication .
+                    // this section is google signin authentication .
 
-                  SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: _handleSignInManager,
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white, // Creamy white bright color
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(20), // Border radius of 20
-                      ),
+                    SizedBox(
+                      height: 20,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 9),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            height: 35,
-                            width: 35,
-                            decoration: uniDesign,
-                            child: Center(
-                              child: Image.network(
-                                'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png',
-                                height: 30,
+                    ElevatedButton(
+                      onPressed: _handleSignInManager,
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white, // Creamy white bright color
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(20), // Border radius of 20
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 9),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              height: 35,
+                              width: 35,
+                              decoration: uniDesign,
+                              child: Center(
+                                child: Image.network(
+                                  'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png',
+                                  height: 30,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            'Sign in with Google',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
+                            SizedBox(width: 10),
+                            Text(
+                              'Sign in with Google',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
