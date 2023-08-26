@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:loyalty_program/customer/design.dart';
 import 'package:loyalty_program/manager/dashboard.dart';
+import 'package:loyalty_program/manager/manager_profile.dart';
+import 'package:loyalty_program/manager/offer_upload_changes.dart';
 
 class nav_Bar_Manager_rout extends StatefulWidget {
   nav_Bar_Manager_rout({super.key});
   static final List<Widget> _widgetOptions = <Widget>[
-    dashboard_page(),
-    const Text(
-      'Search',
-      style: HeadlineStyle,
-    ),
-    const Text(
-      'Search',
-      style: HeadlineStyle,
-    ),
+    Dashboard_Page(),
+    // const Text(
+    //   'Offers',
+    //   style: HeadlineStyle,
+    // ),
+    offers_page(),
+    ProfilePagemanager(),
   ];
 
   @override
@@ -61,7 +60,7 @@ class _nav_Bar_Manager_routState extends State<nav_Bar_Manager_rout> {
                 ),
                 GButton(
                   icon: LineIcons.gift,
-                  text: 'offer',
+                  text: 'offers',
                 ),
                 GButton(
                   icon: LineIcons.user,
