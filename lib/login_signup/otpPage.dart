@@ -8,7 +8,7 @@ import '../manager/manager_nav_bar.dart';
 class OTPPage extends StatefulWidget {
   final String phoneNumber;
 
-  OTPPage({required this.phoneNumber});
+  const OTPPage({super.key, required this.phoneNumber});
 
   @override
   _OTPPageState createState() => _OTPPageState();
@@ -39,7 +39,7 @@ class _OTPPageState extends State<OTPPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => nav_bar_routes(),
+          builder: (context) => const nav_bar_routes(),
         ),
       );
     } else {
@@ -52,7 +52,7 @@ class _OTPPageState extends State<OTPPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primary,
-        title: Text(
+        title: const Text(
           'Enter OTP',
           style: midheadline,
         ),
@@ -68,7 +68,7 @@ class _OTPPageState extends State<OTPPage> {
                 "https://img.freepik.com/free-vector/enter-otp-concept-illustration_114360-7897.jpg?w=2000",
                 height: 200,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               TextFormField(
@@ -77,17 +77,17 @@ class _OTPPageState extends State<OTPPage> {
                 textAlign: TextAlign.center,
                 maxLength: 6,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(10),
+                  contentPadding: const EdgeInsets.all(10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   labelText: 'Enter OTP',
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _verifyOTP,
-                child: Text('Verify OTP'),
+                child: const Text('Verify OTP'),
               ),
             ],
           ),
@@ -112,11 +112,12 @@ class otpLogin_page extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => OTPPage(phoneNumber: '1234567890'),
+                    builder: (context) =>
+                        const OTPPage(phoneNumber: '1234567890'),
                   ),
                 );
               },
-              child: Text('Enter OTP Page'),
+              child: const Text('Enter OTP Page'),
             ),
           ],
         ),
@@ -128,7 +129,7 @@ class otpLogin_page extends StatelessWidget {
 class OTPPagemanager extends StatefulWidget {
   final String phoneNumbermanager;
 
-  OTPPagemanager({required this.phoneNumbermanager});
+  const OTPPagemanager({required this.phoneNumbermanager});
 
   @override
   _OTPPagemanagerState createState() => _OTPPagemanagerState();
@@ -172,7 +173,7 @@ class _OTPPagemanagerState extends State<OTPPagemanager> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primary,
-        title: Text(
+        title: const Text(
           'Enter OTP',
           style: midheadline,
         ),
@@ -188,7 +189,7 @@ class _OTPPagemanagerState extends State<OTPPagemanager> {
                 "https://cdni.iconscout.com/illustration/premium/thumb/otp-authentication-security-5053897-4206545.png",
                 height: 200,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               TextFormField(
@@ -197,17 +198,17 @@ class _OTPPagemanagerState extends State<OTPPagemanager> {
                 textAlign: TextAlign.center,
                 maxLength: 6,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(10),
+                  contentPadding: const EdgeInsets.all(10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   labelText: 'Enter OTP',
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _verifyOTP,
-                child: Text('Verify OTP'),
+                child: const Text('Verify OTP'),
               ),
             ],
           ),
@@ -238,11 +239,11 @@ class _otpLogin_pagemanagerState extends State<otpLogin_pagemanager> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        OTPPagemanager(phoneNumbermanager: '1234567890'),
+                        const OTPPagemanager(phoneNumbermanager: '1234567890'),
                   ),
                 );
               },
-              child: Text('Enter OTP Page'),
+              child: const Text('Enter OTP Page'),
             ),
           ],
         ),

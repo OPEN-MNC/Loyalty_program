@@ -88,7 +88,7 @@ class _homePageState extends State<homePage> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 200, // Adjust height as needed
                 child: Stack(
                   children: [

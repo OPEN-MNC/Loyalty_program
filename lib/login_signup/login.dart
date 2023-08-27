@@ -88,10 +88,10 @@ class _login_pageState extends State<login_page> {
   void _sendOTP() async {
     if (_formKey.currentState!.validate()) {
       // Send OTP logic here
-      print("Sending OTP to: ${_phoneNumberController.text}");
+      debugPrint("Sending OTP to: ${_phoneNumberController.text}");
 
       // Simulate successful OTP sending
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
       // Set login status to true in shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -139,7 +139,7 @@ class _login_pageState extends State<login_page> {
                     "https://cdni.iconscout.com/illustration/premium/thumb/login-3305943-2757111.png",
                     height: 200,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Form(
@@ -150,34 +150,34 @@ class _login_pageState extends State<login_page> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(
                                   172, 134, 214, 1)), // Border color
                         ),
-                        prefixIcon: Icon(Icons.phone),
+                        prefixIcon: const Icon(Icons.phone),
                         labelText: 'Mobile Phone Number',
                       ),
                       validator: _validatePhoneNumber,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: _sendOTP,
                     style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 127, 187, 181),
-                      onPrimary: Color.fromARGB(255, 37, 37, 37),
+                      primary: const Color.fromARGB(255, 127, 187, 181),
+                      onPrimary: const Color.fromARGB(255, 37, 37, 37),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      minimumSize: Size(400, 40),
+                      minimumSize: const Size(400, 40),
                     ),
-                    child: Text('Send OTP'),
+                    child: const Text('Send OTP'),
                   ),
 
                   // this section is google signin authentication .
 
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -208,8 +208,8 @@ class _login_pageState extends State<login_page> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 10),
-                              Text(
+                              const SizedBox(width: 10),
+                              const Text(
                                 'Sign in with Google',
                                 style: TextStyle(color: Colors.black),
                               ),
@@ -232,8 +232,8 @@ class _login_pageState extends State<login_page> {
                                 10), // Border radius of 20
                           ),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 9),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 9),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -348,10 +348,10 @@ class _manager_loginState extends State<manager_login> {
   void _sendOTPS() async {
     if (_formKeys.currentState!.validate()) {
       // Send OTP logic here
-      print("Sending OTP to: ${_phoneNumberControllerManager.text}");
+      debugPrint("Sending OTP to: ${_phoneNumberControllerManager.text}");
 
       // Simulate successful OTP sending
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
       // Set login status to true in shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -374,7 +374,7 @@ class _manager_loginState extends State<manager_login> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "Manager login",
           style: TextStyle(color: Colors.black),
         ),
@@ -383,7 +383,7 @@ class _manager_loginState extends State<manager_login> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             )),
@@ -413,14 +413,14 @@ class _manager_loginState extends State<manager_login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Hi ...",
                       style: HeadlineStyle,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Text(
+                    const Text(
                       "Manager",
                       style: HeadlineStyle,
                     ),
@@ -438,34 +438,34 @@ class _manager_loginState extends State<manager_login> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Color.fromRGBO(
                                     172, 134, 214, 1)), // Border color
                           ),
-                          prefixIcon: Icon(Icons.phone),
+                          prefixIcon: const Icon(Icons.phone),
                           labelText: 'Mobile Phone Number',
                         ),
                         validator: _validatePhoneNumberManager,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: _sendOTPS,
                       style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 127, 187, 181),
-                        onPrimary: Color.fromARGB(255, 37, 37, 37),
+                        primary: const Color.fromARGB(255, 127, 187, 181),
+                        onPrimary: const Color.fromARGB(255, 37, 37, 37),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        minimumSize: Size(400, 40),
+                        minimumSize: const Size(400, 40),
                       ),
-                      child: Text('Send OTP'),
+                      child: const Text('Send OTP'),
                     ),
 
                     // this section is google signin authentication .
 
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     ElevatedButton(
@@ -493,8 +493,8 @@ class _manager_loginState extends State<manager_login> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10),
-                            Text(
+                            const SizedBox(width: 10),
+                            const Text(
                               'Sign in with Google',
                               style: TextStyle(color: Colors.black),
                             ),

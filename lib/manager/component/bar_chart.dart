@@ -25,7 +25,7 @@ class _bar_chartState extends State<bar_chart> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 250,
       child: LineChart(
         mainData(),

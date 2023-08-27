@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:loyalty_program/customer/design.dart';
 
 class NotificationCard extends StatelessWidget {
+  const NotificationCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: primary,
-          title: Text("Notifican"),
+          title: const Text("Notifican"),
           centerTitle: true,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -20,15 +22,15 @@ class NotificationCard extends StatelessWidget {
           child: Column(
             children: [
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap:
                     true, // Add this to adjust the height of the ListView
                 itemCount: 3, // Replace with the number of notifications
                 itemBuilder: (context, index) {
                   return Container(
                     height: 100,
-                    margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       color: Colors.white,
@@ -37,7 +39,7 @@ class NotificationCard extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.3),
                           spreadRadius: 2,
                           blurRadius: 5,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
@@ -52,17 +54,17 @@ class NotificationCard extends StatelessWidget {
                                 Colors.blue, // Customize the background color
                             borderRadius: BorderRadius.circular(45),
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.shopping_cart,
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 // notificationData[index]
                                 //     .title, // Replace with your title data
                                 "New arival",
@@ -71,7 +73,7 @@ class NotificationCard extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text(
                                 // notificationData[index]
                                 //     .message, // Replace with your message data
@@ -83,7 +85,7 @@ class NotificationCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
@@ -95,8 +97,8 @@ class NotificationCard extends StatelessWidget {
                                 color: Colors.grey[600],
                               ),
                             ),
-                            SizedBox(height: 4),
-                            Text(
+                            const SizedBox(height: 4),
+                            const Text(
                               // notificationData[index]
                               //     .status, // Replace with your status data
                               'Just now',

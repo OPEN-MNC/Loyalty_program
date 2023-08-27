@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   // Simulate a delay for loading purposes
   Future<void> fakeLoading() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
   }
 
   @override
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // Navigate to the main screen after loading
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         // builder: (BuildContext context) => const nav_bar_routes(),
-        builder: (BuildContext context) => login_page(),
+        builder: (BuildContext context) => const login_page(),
       ));
     });
   }
@@ -58,8 +58,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 Image.asset("assets/images/diamond-removebg-preview.png",
                     height: 150),
 
-                SizedBox(height: 55),
-                Text(
+                const SizedBox(height: 55),
+                const Text(
                   'Welcome to H&M',
                   style: optionStyle,
                 ),
@@ -79,12 +79,12 @@ class BackgroundPainter extends CustomPainter {
     // final paint = Paint();
 
     // Draw circles
-    _drawCircle(canvas, Offset(100, 100), 70,
-        Color.fromARGB(255, 255, 1, 213).withOpacity(0.4));
-    _drawCircle(canvas, Offset(250, 200), 90,
-        Color.fromARGB(255, 153, 0, 255).withOpacity(0.4));
-    _drawCircle(canvas, Offset(350, 400), 120,
-        Color.fromARGB(255, 255, 0, 0).withOpacity(0.4));
+    _drawCircle(canvas, const Offset(100, 100), 70,
+        const Color.fromARGB(255, 255, 1, 213).withOpacity(0.4));
+    _drawCircle(canvas, const Offset(250, 200), 90,
+        const Color.fromARGB(255, 153, 0, 255).withOpacity(0.4));
+    _drawCircle(canvas, const Offset(350, 400), 120,
+        const Color.fromARGB(255, 255, 0, 0).withOpacity(0.4));
 
     // Draw triangles
     _drawTriangle(
@@ -99,7 +99,7 @@ class BackgroundPainter extends CustomPainter {
       Offset(size.width - 100, size.height - 100),
       Offset(size.width - 200, size.height - 150),
       Offset(size.width - 150, size.height - 250),
-      Color.fromARGB(255, 0, 255, 234).withOpacity(0.4),
+      const Color.fromARGB(255, 0, 255, 234).withOpacity(0.4),
     );
   }
 

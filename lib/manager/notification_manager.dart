@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_program/customer/design.dart';
 
 class Notification_manager extends StatelessWidget {
   const Notification_manager({super.key});

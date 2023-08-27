@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:loyalty_program/manager/component/bar_chart.dart';
 import 'package:loyalty_program/manager/manager_profile.dart';
-import 'package:loyalty_program/manager/notification.dart';
+import 'package:loyalty_program/manager/notification_manager.dart';
 
 import '../customer/design.dart';
 
@@ -14,6 +14,7 @@ class Dashboard_Page extends StatefulWidget {
 }
 
 class _Dashboard_PageState extends State<Dashboard_Page> {
+  bool _showAll = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -239,8 +240,130 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                 "  Your sells track (2023)",
                 style: TextStyle(color: primary, fontSize: 20),
               ),
+              //------------------------------------------------
 
               bar_chart(),
+
+              //------------------------------------------------
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(3, (index) {
+                    return Container(
+                      width: 400,
+                      height: 100,
+                      margin: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 45,
+                            height: 45,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(45),
+                            ),
+                            child: const Icon(
+                              Icons.shopping_cart,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'New Arrival',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Check out our latest collection of products',
+                                  style: TextStyle(
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                '2h ago',
+                                style: TextStyle(
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              const Text(
+                                'Just now',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+              ),
+              if (_showAll)
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 10, // Replace with the actual item count
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 100,
+                      margin: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      // ... Your existing notification content ...
+                    );
+                  },
+                ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _showAll = !_showAll;
+                  });
+                },
+                child: Text(_showAll ? 'See Less' : 'See More'),
+              ),
             ],
           ),
         ),

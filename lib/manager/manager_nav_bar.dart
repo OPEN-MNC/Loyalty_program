@@ -6,14 +6,14 @@ import 'package:loyalty_program/manager/manager_profile.dart';
 import 'package:loyalty_program/manager/offer_upload_changes.dart';
 
 class nav_Bar_Manager_rout extends StatefulWidget {
-  nav_Bar_Manager_rout({super.key});
+  const nav_Bar_Manager_rout({super.key});
   static final List<Widget> _widgetOptions = <Widget>[
-    Dashboard_Page(),
+    const Dashboard_Page(),
     // const Text(
     //   'Offers',
     //   style: HeadlineStyle,
     // ),
-    offers_page(),
+    const offers_page(),
     ProfilePagemanager(),
   ];
 

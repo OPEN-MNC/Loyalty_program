@@ -14,14 +14,14 @@ class LogoutButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         primary: white, // Set background color to white
         onPrimary: Colors.black, // Set text color to black
-        minimumSize: Size(70, 30),
+        minimumSize: const Size(70, 30),
         shape: RoundedRectangleBorder(
           // Add rounded border
           borderRadius: BorderRadius.circular(20),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(11.0),
+      child: const Padding(
+        padding: EdgeInsets.all(11.0),
         child: Row(
           children: [
             Text(
@@ -44,7 +44,7 @@ class LogoutButton extends StatelessWidget {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => login_page(),
+        builder: (context) => const login_page(),
       ),
     );
   }

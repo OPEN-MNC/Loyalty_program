@@ -10,7 +10,7 @@ class ProfilePage extends StatelessWidget {
 
   final double _profile_complete_process =
       100; // Change this to a value between 0 and 100
-  int _gift = 16;
+  final int _gift = 16;
   // ignore: unused_field
   String? _selectedGender;
 
