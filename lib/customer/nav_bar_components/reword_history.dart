@@ -114,8 +114,8 @@ class RewardCard extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (_) => MapScreen()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => MapScreen()));
             },
             style: ElevatedButton.styleFrom(
               primary: const Color.fromARGB(255, 127, 187, 181),

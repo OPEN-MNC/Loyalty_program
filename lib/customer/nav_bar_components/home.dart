@@ -69,7 +69,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => NotificationCard()));
+                                      builder: (_) =>
+                                          const NotificationCard()));
                             },
                             icon: const Icon(
                               LineIcons.gifts,

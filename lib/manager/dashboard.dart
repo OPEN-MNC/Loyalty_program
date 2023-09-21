@@ -64,7 +64,8 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => Notification_manager()));
+                                      builder: (_) =>
+                                          const Notification_manager()));
                             },
                             icon: const Icon(
                               LineIcons.bell,
@@ -77,7 +78,7 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                 ),
               ),
               // Header Section
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
 
@@ -88,8 +89,8 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                     height: 100,
                     width: 165,
                     decoration: uniDesign,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           Text(
@@ -122,8 +123,8 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                     height: 100,
                     width: 165,
                     decoration: uniDesign,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           Text(
@@ -155,7 +156,7 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
               ),
 
               //----------------------------------------------------
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
@@ -166,8 +167,8 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                     height: 100,
                     width: 165,
                     decoration: uniDesign,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           Text(
@@ -200,8 +201,8 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                     height: 100,
                     width: 165,
                     decoration: uniDesign,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           Text(
@@ -233,16 +234,16 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "  Your sells track (2023)",
                 style: TextStyle(color: primary, fontSize: 20),
               ),
               //------------------------------------------------
 
-              bar_chart(),
+              const bar_chart(),
 
               //------------------------------------------------
 
